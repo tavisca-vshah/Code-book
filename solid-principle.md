@@ -1,5 +1,5 @@
 
-##SOLID
+## SOLID
 
 ### Single Responsibility Principle (SRP)
 SRP says "Every software module should have only one reason to change".
