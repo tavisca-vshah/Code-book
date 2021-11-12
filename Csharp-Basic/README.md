@@ -6,7 +6,7 @@
 
 ### Concurrent vs Parallelism
 - Concurrent(Context swtiching, time slicing, shared) while Parallel is isolated, dependent
-- layman example, tead lead playing role of delivery manager is concurrent but having appointing manager for this work
-  ![image](https://user-images.githubusercontent.com/51902571/141476532-1685537c-227f-4e60-b9d1-1025c9cd2deb.png)
+- layman example, tead lead playing role of delivery manager also is concurrent but having appointing manager for this work
+  ![concurrent-vs-parallel](https://user-images.githubusercontent.com/51902571/141477019-fbeee552-cfe9-4afc-90c3-5031d2a3b5a3.png)
 
 
