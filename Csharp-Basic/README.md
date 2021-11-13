@@ -21,5 +21,11 @@
 - layman example, tead lead playing role of delivery manager also is concurrent but having appointing manager for this work
 - Check difference in table<br/><br/>
   ![concurrent-vs-parallel](https://user-images.githubusercontent.com/51902571/141477019-fbeee552-cfe9-4afc-90c3-5031d2a3b5a3.png)
+  
+### TPL (Task parallel library)
+- Threads are core affinity means once a threads run on one core it will always run on same core.
+- As a developer we can write are logic to run threads on different core but you have to smartly select on which core is less loaded also, You are responsible for aggregating final result.
+- TPL encapsulate multi core execution.
+- TPL does thread pooling
 
 
