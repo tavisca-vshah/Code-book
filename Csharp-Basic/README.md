@@ -6,7 +6,23 @@
 - Asynchronous code does not use thread another that main thread. Async keyword does not spawn new thread at background.
 - Question: If asyncronous code does not spawn new thread, how does it does? 
   - Answer: The hidden recipe is state Machine, which divides whole code into several chunks, the code is basically schronous but because of state machine, it looks like asynchronous. <br/><br/>
-  - ![image](https://user-images.githubusercontent.com/51902571/141487898-fbeb7cb0-1562-4ccd-9746-631810e33010.png) <br/><br/>
+  - ``` public static void main(string[] args)
+    { 
+	    Console.WriteLine("Code 1");
+	    Console.WriteLine("Code 2");
+	    SomeMethod();
+      Console.WriteLine("Code 7");
+      Console.WriteLine("Code 8");
+      Console.ReadLine();
+    }
+    private static void SomeMethod()
+    { 
+	    Console.WriteLine("Code 3");
+	    Console.WriteLine("Code 4");
+	    await Task.Delay(60000);
+	     Console.WriteLine("Code 5");
+	    Console.WriteLine("Code 6");
+    }
   -![image](https://user-images.githubusercontent.com/51902571/141487800-8cac9675-5759-42a3-96c7-45975df117c7.png)
   ![image](https://user-images.githubusercontent.com/51902571/141489655-9d5d4c46-4eb7-4c4c-8412-2d40f0a2d8b4.png)
 
