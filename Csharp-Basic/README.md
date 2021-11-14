@@ -44,4 +44,9 @@
 - TPL encapsulate multi core execution.
 - TPL does thread pooling
 
+### Static vs singleton
+- Singleton = static(global object) + Thread safe + lazy loading + encapsulation + iterator
+- Static object can not be passed as parameter as it does not have instance, you cannot do object oriented thing like inheritance, polymorphism
+- static class only can contains static data or method
+
 
