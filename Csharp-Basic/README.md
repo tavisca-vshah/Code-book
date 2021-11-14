@@ -11,9 +11,9 @@
 	    Console.WriteLine("Code 1");
 	    Console.WriteLine("Code 2");
 	    SomeMethod();
-      Console.WriteLine("Code 7");
-      Console.WriteLine("Code 8");
-      Console.ReadLine();
+	    Console.WriteLine("Code 7");
+	    Console.WriteLine("Code 8");
+	    Console.ReadLine();
     }
     private static void SomeMethod()
     { 
@@ -34,9 +34,16 @@
 ### Concurrent vs Parallelism
 - Concurrent(Context switching, time slicing, shared, making application usable with non blocking without thinking of performance) while Parallel is isolated, dependent.
 - Choosing Parallelism where sharing data, chatty nature results in bad design. Concurrent design individual units can be bad design for parallelism
-- layman example, tead lead playing role of delivery manager also is concurrent but having appointing manager for this work
+- layman example, tead lead playing role of delivery manager also is concurrent but having appointing another person to play role of manager for this work is parallelism 
 - Check difference in table<br/><br/>
-  ![concurrent-vs-parallel](https://user-images.githubusercontent.com/51902571/141477019-fbeee552-cfe9-4afc-90c3-5031d2a3b5a3.png)
+
+
+|                      | Concurrent                                                                                        | Parallelism                                |
+|----------------------|---------------------------------------------------------------------------------------------------|--------------------------------------------|
+| Basic definition     | Executing multiple tasks on the same core using overlapping <br>or time slicing/context switching | Executing multiple tasks on different core |
+| Goals                | Make program usable, non blocking                                                                 | Performance                                |
+| Resource Utilization | light                                                                                             | Heavy                                      |
+| Perspective          | Software design: Composition of independently executing <br>computations in aco-operative fashion | Hardware: Executing computation parallel   |
   
 ### TPL (Task parallel library)
 - Threads are core affinity means once a threads run on one core it will always run on same core.
