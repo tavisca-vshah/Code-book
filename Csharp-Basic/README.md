@@ -5,7 +5,7 @@
 - Async await are markers which mark code positions from where control should resume after a task(thread) completes. Await also blocks the control and resume when subtask is completed
 - Asynchronous code does not use thread another that main thread. Async keyword does not spawn new thread at background.
 - Question: If asyncronous code does not spawn new thread, how does it does? 
-  - Answer: The hidden recipe is state Machine, which divides whole code into several chunks, the code is basically schronous but because of state machine, it looks like asynchronous. <br/><br/>
+  - Answer: The hidden recipe is state Machine, which divides whole code into several chunks, the code is basically syncronous but because of state machine, it looks like asynchronous. <br/><br/>
   - ``` public static void main(string[] args)
     { 
 	    Console.WriteLine("Code 1");
