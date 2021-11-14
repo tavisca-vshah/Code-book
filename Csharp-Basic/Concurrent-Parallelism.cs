@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Csharp_Basic
 {
     //This class demostrate concurrent vs parallelism concent
-    public class ConcurrentParallelism
+    public static class Concurrent_Parallelism
     {
         public static void ParallelOrchestration()
         {

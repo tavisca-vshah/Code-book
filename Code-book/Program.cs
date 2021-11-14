@@ -22,8 +22,10 @@ namespace Code_book
             //Console.WriteLine($"Found configuration {globalConfigurationAsString}");
 
             //var tenantId = configurationProvider.GetTenantConfigurationAsString("1eadiecm5ret", "external_service_settings", "data_service_settings");
-            //Console.WriteLine("Press any key to exit...");
-            //Console.ReadLine();
+            Async_Thread.AsyncOrchestration();
+            
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadLine();
         }
     }
 }
