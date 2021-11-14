@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Understanding-OOP", "Unders
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharp-Basic", "Csharp-Basic\Csharp-Basic.csproj", "{3F255401-E5D5-48C9-BFE4-69C12F93369B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Understanding-OOP.Tests", "Understanding-OOP.Tests\Understanding-OOP.Tests.csproj", "{D771F33F-F4EC-461F-B5BB-446294C71CED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3F255401-E5D5-48C9-BFE4-69C12F93369B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F255401-E5D5-48C9-BFE4-69C12F93369B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F255401-E5D5-48C9-BFE4-69C12F93369B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D771F33F-F4EC-461F-B5BB-446294C71CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D771F33F-F4EC-461F-B5BB-446294C71CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D771F33F-F4EC-461F-B5BB-446294C71CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D771F33F-F4EC-461F-B5BB-446294C71CED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
