@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Code_book.Design_Pattern.Bridge_Pattern
+﻿namespace Code_book.Design_Pattern.Bridge_Pattern
 {
     public interface ISwitch
     {
