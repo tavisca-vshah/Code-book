@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Understanding_OOP.Tests.ModelBuilders;
+using ValidationStrategies;
 using Xunit;
 
 namespace Understanding_OOP.Tests
@@ -11,7 +12,7 @@ namespace Understanding_OOP.Tests
         [Fact]
         public void Validate_Should_Throws_ValidationException_When_Name_IsNotValid()
         {
-            Lead customer = new CustomerBuilder<Lead>();
+            Lead customer = new LeadCustomerBuilder().WithValidationStrategy(new LeadCustomerValidationStratgey());
 
             Action validate = () => customer.Validate();
             validate.Should().Throw<ArgumentException>().WithMessage("CustomerName cannot be null. (Parameter 'CustomerName')");
@@ -22,12 +23,13 @@ namespace Understanding_OOP.Tests
         [Theory]
         public void Validate_Should_Throws_ValidationException_When_Phone_IsNotValid(string phoneNumber, string errorMessage)
         {
-            Lead customer = new CustomerBuilder<Lead>()
+            Lead customer = new LeadCustomerBuilder()
                                 .WithCustomerName("john")
                                 .WithPhone(phoneNumber)
                                 .WithBillDate(DateTime.Now)
                                 .WithBillAmount(100m)
-                                .WithAddress("Random address");
+                                .WithAddress("Random address")
+                                .WithValidationStrategy(new LeadCustomerValidationStratgey());
 
             Action validate = () => customer.Validate();
             validate.Should().Throw<ArgumentException>().WithMessage(errorMessage);
@@ -35,17 +37,19 @@ namespace Understanding_OOP.Tests
         [Fact]
         public void Validate_Should_Not_Throws_ValidationException_When_OtherThanNameAndPhoneNumber_IsNotProvided()
         {
-            Lead customer = new CustomerBuilder<Lead>().WithCustomerName("john").WithPhone("9999999999")
-                                .WithAddress("Random address");
+            Lead customer = new LeadCustomerBuilder().WithCustomerName("john").WithPhone("9999999999")
+                                .WithAddress("Random address")
+                                .WithValidationStrategy(new LeadCustomerValidationStratgey()); ;
 
             customer.Validate();
         }
         [Fact]
         public void Validate_Should_Not_Throws_ValidationException_When_AllFieldAreValid()
         {
-            Lead customer = new CustomerBuilder<Lead>()
+            Lead customer = new LeadCustomerBuilder()
                                 .WithCustomerName("john")
-                                .WithPhone("9999999999");
+                                .WithPhone("9999999999")
+                                .WithValidationStrategy(new LeadCustomerValidationStratgey()); ;
 
             customer.Validate();
         }

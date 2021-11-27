@@ -1,11 +1,10 @@
 ﻿using Dawn;
 using System;
-using System.Linq;
-using System.Text.RegularExpressions;
+using Understanding_OOP_Contracts;
 
 namespace Understanding_OOP
 {
-    public class CustomerBase
+    public class CustomerBase : ICustomerBase
     {
         public string CustomerName { get; set; }
         public string PhoneNumber { get; set; }
@@ -19,18 +18,34 @@ namespace Understanding_OOP
             Guard.Argument(PhoneNumber, nameof(PhoneNumber)).NotNull().NotEmpty().Length(10);
         }
     }
+
     public class Customer : CustomerBase
     {
+        private IValidationStrategy<ICustomerBase> _validationStratgey;
+
+        public Customer(IValidationStrategy<ICustomerBase> customerValidationStratgey)
+        {
+            _validationStratgey = customerValidationStratgey;
+        }
+
         public override void Validate()
         {
-            base.Validate();
-            Guard.Argument(BillAmount, nameof(BillAmount)).NotZero().NotNegative();
-            Guard.Argument(BillDate, nameof(BillDate)).NotDefault();
-            Guard.Argument(Address, nameof(Address));
+            _validationStratgey?.Validate(this);
         }
     }
 
-    public class Lead: CustomerBase
+    public class Lead : CustomerBase
     {
+        private IValidationStrategy<ICustomerBase> _validationStratgey;
+
+        public Lead(IValidationStrategy<ICustomerBase> leadCustomerValidationStratgey)
+        {
+            _validationStratgey = leadCustomerValidationStratgey;
+        }
+
+        public override void Validate()
+        {
+            _validationStratgey?.Validate(this);
+        }
     }
 }

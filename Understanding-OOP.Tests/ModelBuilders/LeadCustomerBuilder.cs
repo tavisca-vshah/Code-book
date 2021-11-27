@@ -1,10 +1,9 @@
 ﻿using System;
 using Understanding_OOP_Contracts;
-using ValidationStrategies;
 
 namespace Understanding_OOP.Tests.ModelBuilders
 {
-    public class CustomerBuilder
+    public class LeadCustomerBuilder
     {
         private string CustomerName;
         private string PhoneNumber;
@@ -14,51 +13,46 @@ namespace Understanding_OOP.Tests.ModelBuilders
 
         public IValidationStrategy<ICustomerBase> ValidationStrategy;
 
-        public CustomerBuilder WithCustomerName(string name)
+        public LeadCustomerBuilder WithCustomerName(string name)
         {
             CustomerName = name;
             return this;
         }
 
-        public CustomerBuilder WithPhone(string phoneNumber)
+        public LeadCustomerBuilder WithPhone(string phoneNumber)
         {
             PhoneNumber = phoneNumber;
             return this;
         }
 
-        public CustomerBuilder WithBillAmount(decimal billAmount)
+        public LeadCustomerBuilder WithBillAmount(decimal billAmount)
         {
             BillAmount = billAmount;
             return this;
         }
 
-        public CustomerBuilder WithBillDate(DateTime billDate)
+        public LeadCustomerBuilder WithBillDate(DateTime billDate)
         {
             BillDate = billDate;
             return this;
         }
 
-        public CustomerBuilder WithAddress(string address)
+        public LeadCustomerBuilder WithAddress(string address)
         {
             Address = address;
             return this;
         }
-        public CustomerBuilder WithValidationStrategy(IValidationStrategy<ICustomerBase> validationStrategy)
+        public LeadCustomerBuilder WithValidationStrategy(IValidationStrategy<ICustomerBase> validationStrategy)
         {
             ValidationStrategy = validationStrategy;
             return this;
         }
-        public CustomerBuilder WithDefaultValidationStrategy()
-        {
-            ValidationStrategy = new CustomerValidationStratgey();
-            return this;
-        }
 
-        public static implicit operator Customer(CustomerBuilder instance) => instance.Build();
+        public static implicit operator Lead(LeadCustomerBuilder instance) => instance.Build();
 
-        public Customer Build()
+        public Lead Build()
         {
-            return new Customer(ValidationStrategy)
+            return new Lead(ValidationStrategy)
             {
                 CustomerName = CustomerName,
                 Address = Address,

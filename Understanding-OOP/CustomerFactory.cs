@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using Understanding_OOP_Contracts;
+using ValidationStrategies;
 
 namespace Understanding_OOP
 {
     public static class CustomerFactory
     {
-        private static ConcurrentDictionary<string, CustomerBase> _customers = new ConcurrentDictionary<string, CustomerBase>(StringComparer.OrdinalIgnoreCase);
+        private static ConcurrentDictionary<string, ICustomerBase> _customers = new ConcurrentDictionary<string, ICustomerBase>(StringComparer.OrdinalIgnoreCase);
         //static CustomerFactory()
         //{
         //    /*
         //     * Eager loading
         //     */
         //}
-        public static CustomerBase Create(string customerType)
+        public static ICustomerBase Create(string customerType)
         {
             /*
              * Design pattern: Simple factory
@@ -23,10 +25,10 @@ namespace Understanding_OOP
                 /* 
                  * lazy initailization
                  */
-                _customers.TryAdd("customer", new Customer());
-                _customers.TryAdd("lead", new Lead());
+                _customers.TryAdd("customer", new Customer(new CustomerValidationStratgey()));
+                _customers.TryAdd("lead", new Lead(new LeadCustomerValidationStratgey()));
             }
-            if(_customers.TryGetValue(customerType, out CustomerBase instance))
+            if(_customers.TryGetValue(customerType, out ICustomerBase instance))
             {
                 return instance;
             }

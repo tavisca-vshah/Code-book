@@ -2,6 +2,7 @@ using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using Understanding_OOP.Tests.ModelBuilders;
+using ValidationStrategies;
 using Xunit;
 
 
@@ -12,7 +13,7 @@ namespace Understanding_OOP.Tests
         [Fact]
         public void Validate_Should_Throws_ValidationException_When_Name_IsNotValid()
         {
-            Customer customer = new CustomerBuilder<Customer>();
+            Customer customer = new CustomerBuilder().WithDefaultValidationStrategy();
 
             Action validate = () => customer.Validate();
             validate.Should().Throw<ArgumentException>().WithMessage("CustomerName cannot be null. (Parameter 'CustomerName')");
@@ -24,12 +25,13 @@ namespace Understanding_OOP.Tests
         [Theory]
         public void Validate_Should_Throws_ValidationException_When_Phone_IsNotValid(string phoneNumber,string errorMessage)
         {
-            Customer customer = new CustomerBuilder<Customer>()
+            Customer customer = new CustomerBuilder()
                                 .WithCustomerName("john")
                                 .WithPhone(phoneNumber)
                                 .WithBillDate(DateTime.Now)
                                 .WithBillAmount(100m)
-                                .WithAddress("Random address");
+                                .WithAddress("Random address")
+                                .WithDefaultValidationStrategy();
 
             Action validate = () => customer.Validate();
             validate.Should().Throw<ArgumentException>().WithMessage(errorMessage);
@@ -39,12 +41,13 @@ namespace Understanding_OOP.Tests
         [MemberData(nameof(Data))]
         public void Validate_Should_Throws_ValidationException_When_BillDate_IsNotValid(DateTime dateTime, string errorMessage)
         {
-            Customer customer = new CustomerBuilder<Customer>()
+            Customer customer = new CustomerBuilder()
                                 .WithCustomerName("john")
                                 .WithPhone("9999999999")
                                 .WithBillDate(dateTime)
                                 .WithBillAmount(100m)
-                                .WithAddress("Random address");
+                                .WithAddress("Random address")
+                                .WithDefaultValidationStrategy();
 
             Action validate = () => customer.Validate();
             validate.Should().Throw<ArgumentException>().WithMessage(errorMessage);
@@ -52,12 +55,13 @@ namespace Understanding_OOP.Tests
         [Fact]
         public void Validate_Should_Not_Throws_ValidationException_When_AllFieldAreValid()
         {
-            Customer customer = new CustomerBuilder<Customer>()
+            Customer customer = new CustomerBuilder()
                                 .WithCustomerName("john")
                                 .WithPhone("9999999999")
                                 .WithBillDate(DateTime.Now)
                                 .WithBillAmount(100m)
-                                .WithAddress("Random address");
+                                .WithAddress("Random address")
+                                .WithDefaultValidationStrategy();
 
             customer.Validate();
         }
